@@ -1,0 +1,6 @@
+@Joonasw.EntraIdAuthenticationSample.Server_HostAddress = http://localhost:5167
+
+GET {{Joonasw.EntraIdAuthenticationSample.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

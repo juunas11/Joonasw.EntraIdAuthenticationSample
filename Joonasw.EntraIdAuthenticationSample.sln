@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35027.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Joonasw.EntraIdAuthenticationSample.Server", "Joonasw.EntraIdAuthenticationSample.Server\Joonasw.EntraIdAuthenticationSample.Server.csproj", "{4A8A2506-07FD-4749-9DC4-3FD70EAD4F6B}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "joonasw.entraidauthenticationsample.client", "joonasw.entraidauthenticationsample.client\joonasw.entraidauthenticationsample.client.esproj", "{BBE9A6F0-A264-4693-B799-C0D01C3BB0E4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4A8A2506-07FD-4749-9DC4-3FD70EAD4F6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A8A2506-07FD-4749-9DC4-3FD70EAD4F6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A8A2506-07FD-4749-9DC4-3FD70EAD4F6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A8A2506-07FD-4749-9DC4-3FD70EAD4F6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBE9A6F0-A264-4693-B799-C0D01C3BB0E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBE9A6F0-A264-4693-B799-C0D01C3BB0E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBE9A6F0-A264-4693-B799-C0D01C3BB0E4}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{BBE9A6F0-A264-4693-B799-C0D01C3BB0E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBE9A6F0-A264-4693-B799-C0D01C3BB0E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBE9A6F0-A264-4693-B799-C0D01C3BB0E4}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C73E0AE6-2E75-41C9-B8E0-B8DE69773510}
+	EndGlobalSection
+EndGlobal
