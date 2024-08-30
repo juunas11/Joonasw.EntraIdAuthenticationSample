@@ -5,6 +5,7 @@ import './index.css'
 
 import { PublicClientApplication, EventType, EventMessage, AuthenticationResult } from "@azure/msal-browser";
 import { msalConfig } from "./authConfig";
+import { BrowserRouter } from 'react-router-dom';
 
 export const msalInstance = new PublicClientApplication(msalConfig);
 
@@ -24,7 +25,9 @@ msalInstance.initialize().then(() => {
 
     createRoot(document.getElementById('root')!).render(
         <StrictMode>
-            <App pca={msalInstance} />
+            <BrowserRouter>
+                <App pca={msalInstance} />
+            </BrowserRouter>
         </StrictMode>,
     );
 })

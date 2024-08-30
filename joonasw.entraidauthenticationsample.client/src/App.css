@@ -5,7 +5,12 @@
     text-align: center;
 }
 
-th, td {
+th,
+td {
     padding-left: 1rem;
     padding-right: 1rem;
+}
+
+#userClaims {
+    text-align: left;
 }

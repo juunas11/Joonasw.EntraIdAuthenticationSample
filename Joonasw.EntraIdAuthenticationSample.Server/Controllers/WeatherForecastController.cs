@@ -1,6 +1,13 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Identity.Client;
+using Microsoft.Identity.Web;
+using Microsoft.Identity.Web.Resource;
 
 namespace Joonasw.EntraIdAuthenticationSample.Server.Controllers;
+
+[Authorize]
+[RequiredScope("Forecasts.Read")]
 [ApiController]
 [Route("[controller]")]
 public class WeatherForecastController : ControllerBase
