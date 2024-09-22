@@ -5,6 +5,7 @@ import { LoadingComponent } from "../components/LoadingComponent";
 import { loginRequest } from "../authConfig";
 import { useQuery } from "@tanstack/react-query";
 import { msalInstance } from "../main";
+import { useState } from "react";
 
 interface Forecast {
     date: string;
@@ -27,16 +28,17 @@ const HomeContent = () => {
             const headers = new Headers();
             headers.append("Authorization", `Bearer ${tokenResponse.accessToken}`);
 
-            const response = await fetch('http://localhost:5167/weatherforecast', {
+            const response = await fetch('https://localhost:7167/weatherforecast', {
                 headers: headers,
                 method: 'GET'
             });
             return await response.json();
         }
     });
-    useQuery({
-        queryKey: ['graph', account?.homeAccountId],
-        enabled: !!account,
+    const [shownUser, setShownUser] = useState<'ManualHttp'|'MsIdWeb'|null>(null)
+    const { data: graphUserWithManualHttp, refetch: fetchUserWithManualHttp } = useQuery({
+        queryKey: ['graphManualHttp', account?.homeAccountId],
+        enabled: false,
         queryFn: async () => {
             const tokenResponse = await msalInstance.acquireTokenSilent({
                 ...loginRequest,
@@ -45,7 +47,25 @@ const HomeContent = () => {
             const headers = new Headers();
             headers.append("Authorization", `Bearer ${tokenResponse.accessToken}`);
 
-            const response = await fetch('http://localhost:5167/graph/me', {
+            const response = await fetch('https://localhost:7167/graph/manualhttp', {
+                headers: headers,
+                method: 'GET'
+            });
+            return await response.json();
+        }
+    });
+    const { data: graphUserWithMsIdWeb, refetch: fetchUserWithMsIdWeb } = useQuery({
+        queryKey: ['graphMsIdWeb', account?.homeAccountId],
+        enabled: false,
+        queryFn: async () => {
+            const tokenResponse = await msalInstance.acquireTokenSilent({
+                ...loginRequest,
+                account: account!
+            });
+            const headers = new Headers();
+            headers.append("Authorization", `Bearer ${tokenResponse.accessToken}`);
+
+            const response = await fetch('https://localhost:7167/graph/msidweb', {
                 headers: headers,
                 method: 'GET'
             });
@@ -86,6 +106,21 @@ const HomeContent = () => {
             <div>
                 <h2>ID token claims for signed in user</h2>
                 {account && <pre id="userClaims">{JSON.stringify(account.idTokenClaims, null, 2)}</pre>}
+            </div>
+            <div>
+                <h2>User from Graph API</h2>
+                <div>
+                    <button onClick={() => {
+                        setShownUser('ManualHttp');
+                        fetchUserWithManualHttp();
+                    }}>Fetch user with manual HTTP request</button>
+                    <button onClick={() => {
+                        setShownUser('MsIdWeb');
+                        fetchUserWithMsIdWeb();
+                    }}>Fetch user with MS ID Web</button>
+                    {shownUser === 'ManualHttp' && graphUserWithManualHttp && <pre id="graphUser">{JSON.stringify(graphUserWithManualHttp, null, 2)}</pre>}
+                    {shownUser === 'MsIdWeb' && graphUserWithMsIdWeb && <pre id="graphUser">{JSON.stringify(graphUserWithMsIdWeb, null, 2)}</pre>}
+                </div>
             </div>
         </>
     );

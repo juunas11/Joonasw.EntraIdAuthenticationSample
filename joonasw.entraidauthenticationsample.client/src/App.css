@@ -11,6 +11,6 @@ td {
     padding-right: 1rem;
 }
 
-#userClaims {
+#userClaims, #graphUser {
     text-align: left;
 }

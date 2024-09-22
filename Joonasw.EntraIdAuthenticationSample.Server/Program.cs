@@ -22,7 +22,9 @@ public class Program
             });
         });
 
-        builder.Services.AddMicrosoftIdentityWebApiAuthentication(builder.Configuration)
+        builder.Services.AddHttpClient("GraphApi");
+
+        builder.Services.AddMicrosoftIdentityWebApiAuthentication(builder.Configuration, configSectionName: "EntraId")
             .EnableTokenAcquisitionToCallDownstreamApi()
             .AddMicrosoftGraph(builder.Configuration.GetSection("MsGraph"))
             .AddInMemoryTokenCaches();
