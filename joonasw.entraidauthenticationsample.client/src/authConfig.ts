@@ -14,5 +14,9 @@ export const msalConfig: Configuration = {
 
 export const loginRequest: PopupRequest = {
     // openid, profile, and offline_access scopes are added by default
+    scopes: ["api://ce9bb3c6-e71c-4383-8f0d-2a939ade243d/Forecasts.Read User.Read"]
+};
+
+export const apiRequest = {
     scopes: ["api://ce9bb3c6-e71c-4383-8f0d-2a939ade243d/Forecasts.Read"]
 };

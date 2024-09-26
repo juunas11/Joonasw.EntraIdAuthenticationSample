@@ -2,7 +2,7 @@ import { InteractionType } from "@azure/msal-browser";
 import { MsalAuthenticationTemplate, useAccount } from "@azure/msal-react";
 import { ErrorComponent } from "../components/ErrorComponent";
 import { LoadingComponent } from "../components/LoadingComponent";
-import { loginRequest } from "../authConfig";
+import { apiRequest, loginRequest } from "../authConfig";
 import { useQuery } from "@tanstack/react-query";
 import { msalInstance } from "../main";
 import { useState } from "react";
@@ -22,13 +22,13 @@ const HomeContent = () => {
         enabled: !!account,
         queryFn: async () => {
             const tokenResponse = await msalInstance.acquireTokenSilent({
-                ...loginRequest,
+                ...apiRequest,
                 account: account!
             });
             const headers = new Headers();
             headers.append("Authorization", `Bearer ${tokenResponse.accessToken}`);
 
-            const response = await fetch('https://localhost:7167/weatherforecast', {
+            const response = await fetch('http://localhost:5167/weatherforecast', {
                 headers: headers,
                 method: 'GET'
             });
@@ -41,13 +41,13 @@ const HomeContent = () => {
         enabled: false,
         queryFn: async () => {
             const tokenResponse = await msalInstance.acquireTokenSilent({
-                ...loginRequest,
+                ...apiRequest,
                 account: account!
             });
             const headers = new Headers();
             headers.append("Authorization", `Bearer ${tokenResponse.accessToken}`);
 
-            const response = await fetch('https://localhost:7167/graph/manualhttp', {
+            const response = await fetch('http://localhost:5167/graph/manualhttp', {
                 headers: headers,
                 method: 'GET'
             });
@@ -59,13 +59,13 @@ const HomeContent = () => {
         enabled: false,
         queryFn: async () => {
             const tokenResponse = await msalInstance.acquireTokenSilent({
-                ...loginRequest,
+                ...apiRequest,
                 account: account!
             });
             const headers = new Headers();
             headers.append("Authorization", `Bearer ${tokenResponse.accessToken}`);
 
-            const response = await fetch('https://localhost:7167/graph/msidweb', {
+            const response = await fetch('http://localhost:5167/graph/msidweb', {
                 headers: headers,
                 method: 'GET'
             });

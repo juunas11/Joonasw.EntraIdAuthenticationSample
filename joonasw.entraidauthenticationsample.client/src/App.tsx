@@ -6,7 +6,14 @@ import { Route, Routes, useNavigate } from 'react-router-dom';
 import { CustomNavigationClient } from './utils/CustomNavigationClient';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+    defaultOptions: {
+        queries: {
+            refetchOnWindowFocus: false,
+            retry: false
+        }
+    }
+});
 
 interface AppProps {
     pca: IPublicClientApplication
