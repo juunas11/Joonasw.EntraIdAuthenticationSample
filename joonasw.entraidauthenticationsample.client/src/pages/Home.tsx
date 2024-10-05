@@ -122,6 +122,10 @@ const HomeContent = () => {
                     {shownUser === 'MsIdWeb' && graphUserWithMsIdWeb && <pre id="graphUser">{JSON.stringify(graphUserWithMsIdWeb, null, 2)}</pre>}
                 </div>
             </div>
+            <div>
+                <hr />
+                <button onClick={() => msalInstance.logoutRedirect()}>Logout</button>
+            </div>
         </>
     );
 }
